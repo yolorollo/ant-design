@@ -138,4 +138,20 @@ describe('Sender Component', () => {
     const { container } = render(<Sender readOnly />);
     expect(container.querySelector('textarea')).toHaveAttribute('readonly');
   });
+
+  it('allowSpeech', () => {
+    const { container } = render(<Sender allowSpeech />);
+    expect(container.querySelector('.ant-sender-action-list-presets')).toMatchSnapshot();
+
+    // 不支持语音时不显示语音按钮
+    const mockSpeechRecognition = (window as any).SpeechRecognition;
+    delete (window as any).SpeechRecognition;
+    delete (window as any).webkitSpeechRecognition;
+
+    const { container: noSpeechContainer } = render(<Sender allowSpeech />);
+    expect(noSpeechContainer.querySelector('.ant-sender-action-list-presets')).toMatchSnapshot();
+
+    // 恢复 mock
+    (window as any).SpeechRecognition = mockSpeechRecognition;
+  });
 });
