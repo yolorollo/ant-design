@@ -138,4 +138,34 @@ describe('Sender Component', () => {
     const { container } = render(<Sender readOnly />);
     expect(container.querySelector('textarea')).toHaveAttribute('readonly');
   });
+
+  describe('allowSpeech', () => {
+    it('allowSpeech prop enables speech input', () => {
+      const { container } = render(<Sender allowSpeech />);
+      const speechButton = container.querySelector('.ant-sender-actions-btn');
+      expect(speechButton).toBeInTheDocument();
+    });
+
+    it('custom speech input using allowSpeech prop', () => {
+      const onRecordingChange = jest.fn();
+      const { container } = render(
+        <Sender
+          allowSpeech={{
+            recording: false,
+            onRecordingChange,
+          }}
+        />,
+      );
+      const speechButton = container.querySelector('.ant-sender-actions-btn');
+      fireEvent.click(speechButton!);
+      expect(onRecordingChange).toHaveBeenCalledWith(true);
+    });
+
+    it('speech button functionality', () => {
+      const { container } = render(<Sender allowSpeech />);
+      const speechButton = container.querySelector('.ant-sender-actions-btn');
+      fireEvent.click(speechButton!);
+      expect(container.querySelector('.ant-sender-actions-btn')).toBeInTheDocument();
+    });
+  });
 });
