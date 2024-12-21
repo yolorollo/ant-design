@@ -48,8 +48,4 @@ const Demo = () => {
   return <Conversations defaultActiveKey="item1" menu={menuConfig} items={items} style={style} />;
 };
 
-export default () => (
-  <App>
-    <Demo />
-  </App>
-);
+export default Demo;

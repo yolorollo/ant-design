@@ -40,8 +40,4 @@ const Demo = () => {
   );
 };
 
-export default () => (
-  <App>
-    <Demo />
-  </App>
-);
+export default Demo;

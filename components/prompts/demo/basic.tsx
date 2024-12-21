@@ -1,6 +1,3 @@
-import React from 'react';
-import { Prompts } from '@ant-design/x';
-import type { PromptsProps } from '@ant-design/x';
 import {
   BulbOutlined,
   InfoCircleOutlined,
@@ -8,7 +5,10 @@ import {
   SmileOutlined,
   WarningOutlined,
 } from '@ant-design/icons';
+import { Prompts } from '@ant-design/x';
+import type { PromptsProps } from '@ant-design/x';
 import { App } from 'antd';
+import React from 'react';
 
 const items: PromptsProps['items'] = [
   {
@@ -57,8 +57,4 @@ const Demo = () => {
   );
 };
 
-export default () => (
-  <App>
-    <Demo />
-  </App>
-);
+export default Demo;

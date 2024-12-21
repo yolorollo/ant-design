@@ -84,8 +84,4 @@ const Demo: React.FC = () => {
   );
 };
 
-export default () => (
-  <App>
-    <Demo />
-  </App>
-);
+export default Demo;
